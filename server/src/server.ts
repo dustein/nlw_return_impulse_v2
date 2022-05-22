@@ -1,10 +1,18 @@
 import express from 'express';
-import { router } from './routes';
+import cors from 'cors';
+import { routes } from './routes';
 
 const app = express();
 
+//no cors devemos definir qual front pode acessar o back, medida de seguranca, nao usarmeos no projeto mes estudar isso
+// app.use(cors({
+//    origin: 'http://podeacessar....'
+// }));
+
+app.use(cors());
+
 app.use(express.json());
-app.use(router);
 
+app.use(routes);
 
-app.listen(3333, () => { console.log("Servidor ativo")})
+app.listen(3333, () => console.log(`Servidor ATIVO !`))
