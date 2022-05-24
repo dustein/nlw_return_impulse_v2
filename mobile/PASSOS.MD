@@ -9,6 +9,6 @@ para gestos vamos utilizar react-native-bottom-sheet. como dependencias tem que 
 Como essas bibliotecas mexem com codigo nativo, dar um reestart no expo "expo start --clear" para limpar o cache, depois pode iniciar novamente sem o clear.
 No Widget importar o UseRef para anotar a referencia do BottomSheet para conseguir abri-lo sem utilizar um estado, por exemplo.
 
-53 min aula 4
+1:01 aula 4
 
 

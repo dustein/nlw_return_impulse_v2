@@ -6,7 +6,7 @@ import { styles } from "./styles";
 export function Copyright() {
   
   return (
-    < View>
+    <View>
 
       <Text style={styles.text}>
         Projeto NLW DuStein 
