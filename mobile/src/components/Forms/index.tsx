@@ -11,6 +11,7 @@ import { Button } from '../Button';
 
 import { styles } from "./styles";
 import { theme } from "../../theme";
+import { api } from "../../libs/api";
 import { feedbackTypes } from '../../utils/feedbackTypes';
 
 
@@ -25,6 +26,7 @@ export function Form({feedbackType, onFeedbackCanceled, onFeedbackSent}: Props) 
 
   const [isSendingFeedback, setIsSendingFeedback] = useState(false);
   const [sceenshot, setScreenshot] = useState<string | null>(null);
+  const [comment, setComment] = useState('')
 
   function handleScreenshot() {
     captureScreen({
@@ -49,6 +51,13 @@ export function Form({feedbackType, onFeedbackCanceled, onFeedbackSent}: Props) 
     setIsSendingFeedback(true);
 
     try {
+      await api.post('/feedbacks', {
+        type: feedbackType,
+        sceenshot: sceenshot,
+        comment: comment
+      })
+
+      onFeedbackSent();
       
     } catch(error) {
       console.log(error);
@@ -91,6 +100,7 @@ export function Form({feedbackType, onFeedbackCanceled, onFeedbackSent}: Props) 
         placeholder="Oh no! Algo errado, deixe seu feedback para que eu possa corrigir, obrigado"
         placeholderTextColor={theme.colors.text_secondary}
         autoCorrect={false}
+        onChangeText={setComment}
       />
 
       <View style={styles.footer}>

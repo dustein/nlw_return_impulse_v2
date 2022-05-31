@@ -4,7 +4,13 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import styles from "./styles";
 import successImg from '../../assets/success.png'
 import { Copyright } from "../Copyright";
-export function Success() {
+
+interface Props {
+  onSendAnotherFeedback: () => void;
+}
+
+
+export function Success({onSendAnotherFeedback}: Props) {
 
   return (
   
@@ -19,7 +25,10 @@ export function Success() {
       Grato!
     </Text>
 
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity 
+      onPress={onSendAnotherFeedback}  
+      style={styles.button}
+    >
 
       <Text style={styles.buttonTitle}>
         Enviar outro feedback?
